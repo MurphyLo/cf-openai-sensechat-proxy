@@ -1,4 +1,4 @@
-# cf-openai-azure-proxy
+# cf-openai-sensechat-proxy
 
 > 似乎暂未有 OpenAI 客户端支持对商汤 sensechat-v5 模型提供了支持，但Azure OpenAI Service的申请和绑卡都非常简单，并且还提供了免费的额度。此脚本使用免费的 Cloudflare Worker 作为代理，使得支持 OpenAI 的客户端可以直接使用 Azure OpenAI Service。
 
@@ -13,7 +13,7 @@
 
 1. 注册并登录到 Cloudflare 账户
 2. 创建一个新的 Cloudflare Worker
-3. 将 [cf-openai-azure-proxy.js](./cf-openai-sensechat-proxy.js) 复制并粘贴到 Cloudflare Worker 编辑器中
+3. 将 [cf-openai-sensechat-proxy.js](./cf-openai-sensechat-proxy.js) 复制并粘贴到 Cloudflare Worker 编辑器中
 4. 保存并部署 Cloudflare Worker
 
 ### 客户端
