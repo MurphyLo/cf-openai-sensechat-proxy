@@ -1,6 +1,7 @@
 # cf-openai-sensechat-proxy
 
-> [https://mp.weixin.qq.com/s/rl4_-wbsLDZefnuy_O5DkQ](性能超越 GPT-4 Turbo！「商汤日日新」大升级，国产大模型超市开张了)
+> [性能超越 GPT-4 Turbo！「商汤日日新」大升级，国产大模型超市开张了](https://mp.weixin.qq.com/s/rl4_-wbsLDZefnuy_O5DkQ)
+> 
 > 商汤近期发布了日日新 5.0（SenseChat-5）大模型，注册日日新开放平台即送 60 元代金卷。但似乎暂未有 OpenAI 客户端支持对商汤 SenseChat-5 模型提供了支持，此脚本使用免费的 Cloudflare Worker 作为代理，使得支持 OpenAI 的客户端可以直接使用 `SenseChat-5` 模型。
 
 ### 支持模型:
