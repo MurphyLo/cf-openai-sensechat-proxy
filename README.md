@@ -1,15 +1,16 @@
 # cf-openai-sensechat-proxy
 
-> 似乎暂未有 OpenAI 客户端支持对商汤 sensechat-v5 模型提供了支持，但Azure OpenAI Service的申请和绑卡都非常简单，并且还提供了免费的额度。此脚本使用免费的 Cloudflare Worker 作为代理，使得支持 OpenAI 的客户端可以直接使用 Azure OpenAI Service。
+> [https://mp.weixin.qq.com/s/rl4_-wbsLDZefnuy_O5DkQ](性能超越 GPT-4 Turbo！「商汤日日新」大升级，国产大模型超市开张了)
+> 商汤近期发布了日日新 5.0（SenseChat-5）大模型，注册日日新开放平台即送 60 元代金卷。但似乎暂未有 OpenAI 客户端支持对商汤 SenseChat-5 模型提供了支持，此脚本使用免费的 Cloudflare Worker 作为代理，使得支持 OpenAI 的客户端可以直接使用 `SenseChat-5` 模型。
 
 ### 支持模型:
-- sensechat-v5
+- SenseChat-5
   
 ### 项目说明:
 与 [haibbo/cf-openai-azure-proxy](https://github.com/haibbo/cf-openai-azure-proxy) 项目功能及用法完全一致，感谢 `@haibbo` 最初提出该方案。
 
 ### 部署
-代理 OpenAI 格式的请求到 sensechat-v5 的 [对话生成（无会话历史）](https://platform.sensenova.cn/doc?path=/chat/ChatCompletions/ChatCompletions.md) 端点，代码部署步骤：
+代理 OpenAI 格式的请求到 SenseChat-5 的 [对话生成（无会话历史）](https://platform.sensenova.cn/doc?path=/chat/ChatCompletions/ChatCompletions.md) 端点，代码部署步骤：
 
 1. 注册并登录到 Cloudflare 账户
 2. 创建一个新的 Cloudflare Worker
