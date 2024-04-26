@@ -30,4 +30,4 @@ OpenAI 客户端的代理端点配置一致，由常见到少见有以下几种�
 - `https://<route>/v1`, 如 [OpenAI python API](https://github.com/openai/openai-python)
 - `https://<route>/v1/chat/completions`, 如 [BetterChatGPT](https://bettergpt.chat/)
 
-其中，`<route>` 为 Cloudflare worker 的 Settings 中 Triggers 配置项自动分配的 Routes 域名。你也可以直接使用配置好的 <route>: `api.smartmonk.biz`
+其中，`<route>` 为 Cloudflare worker 的 Settings 中 Triggers 配置项自动分配的 Routes 域名。你也可以直接使用配置好的 \<route\>: `api.smartmonk.biz`
