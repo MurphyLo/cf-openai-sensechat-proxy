@@ -8,7 +8,7 @@
 - SenseChat-5
   
 ### 项目说明:
-与 [haibbo/cf-openai-azure-proxy](https://github.com/haibbo/cf-openai-azure-proxy) 项目功能及用法完全一致，感谢 `@haibbo` 最初提出该方案。
+与 [haibbo/cf-openai-azure-proxy](https://github.com/haibbo/cf-openai-azure-proxy) 项目功能及用法完全一致，感谢 `@haibbo` 最初提出的方案。
 
 ### 部署
 代理 OpenAI 格式的请求到 SenseChat-5 的 [对话生成（无会话历史）](https://platform.sensenova.cn/doc?path=/chat/ChatCompletions/ChatCompletions.md) 端点，代码部署步骤：
@@ -19,10 +19,15 @@
 4. 保存并部署 Cloudflare Worker
 
 ### 客户端
-使用 `API Token` 进行鉴权，在 [商汤大装置|用户访问控制](https://console.sensecore.cn/iam/Security/access-key) 页面创建 `Access Key ID` 与 `Access Key`，根据 [接口鉴权](https://platform.sensenova.cn/doc?path=/overview/Authorization.md) 生成 `Authorization: Bearer <API Token>` 内容。其它与一般 OpenAI 代理端点配置一致，由常见到少见有以下几种情况：
+使用 `API Token` 进行鉴权，在 [商汤大装置|用户访问控制](https://console.sensecore.cn/iam/Security/access-key) 页面创建 `Access Key ID` 与 `Access Key`，脚本实现了 JWT [接口鉴权](https://platform.sensenova.cn/doc?path=/overview/Authorization.md) ，你可以任选下面一种 api_key 验证方法，两种方法都被大部分 OpenAI 客户端均支持。
 
-- `https://<route>`
-- `https://<route>/v1`
-- `https://<route>/v1/chat/completions`
+- 使用 `<Access Key ID>|<Access Key>` 作为 api_key，例如 `D34...7DB|B43...58F`。
+- 使用通过 `Access Key ID` 与 `Access Key` [编码的](https://platform.sensenova.cn/doc?path=/overview/Authorization.md) `API_Token` 作为 api_key，优点是可以自定义失效时间。
+
+OpenAI 客户端的代理端点配置一致，由常见到少见有以下几种情况：
+
+- `https://<route>`, 如 [Chatbox客户端](https://github.com/Bin-Huang/chatbox)
+- `https://<route>/v1`, 如 [OpenAI python API](https://github.com/openai/openai-python)
+- `https://<route>/v1/chat/completions`, 如 [BetterChatGPT](https://bettergpt.chat/)
 
 其中，`<route>` 为 Cloudflare worker 的 Settings 中 Triggers 配置项自动分配的 Routes 域名。
