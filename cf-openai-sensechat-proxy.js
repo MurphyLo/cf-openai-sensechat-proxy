@@ -44,7 +44,7 @@ async function handleRequest(request) {
       // 如果是 SSE 请求,则对结果进行修改和映射
       const transformedStream = new TransformStream({
         transform(chunk, controller) {
-          const transformedChunk = transformSSEChunk(chunk);
+          const transformedChunk = transformSSEChunk(chunk, request);
           controller.enqueue(transformedChunk);
         }
       });
@@ -88,7 +88,7 @@ async function modifyRequestBody(request) {
     }
     if (body.hasOwnProperty('top_p')) {
       const topP = body.top_p;
-      body.top_p = topP <= 0 ? 0.000001 : (topP >= 1 ? 0.999999 : topP);;
+      body.top_p = topP <= 0 ? 0.000001 : (topP >= 1 ? 0.999999 : topP);
     }
     return JSON.stringify(body);
   }
@@ -97,7 +97,7 @@ async function modifyRequestBody(request) {
 
 let buffer = '';
 
-function transformSSEChunk(chunk) {
+function transformSSEChunk(chunk, originalRequest) {
   if (!(chunk instanceof Uint8Array)) {
     chunk = new Uint8Array(chunk);
   }
@@ -106,6 +106,10 @@ function transformSSEChunk(chunk) {
 
   let result = '';
   let position = 0;
+
+  // 获取原始请求体中的model字段
+  const originalBody = originalRequest.json();
+  const originalModel = originalBody.model;
 
   while (position < buffer.length) {
     const nextPosition = buffer.indexOf('\n\n', position);
@@ -133,7 +137,7 @@ function transformSSEChunk(chunk) {
             id: data.data.id,
             object: 'chat.completion.chunk',
             created: Math.floor(Date.now() / 1000),
-            model: "SenseChat-5",
+            model: originalModel, // 使用原始请求体中的model字段
             system_fingerprint: 'cf-openai-sensechat-proxy-123',
             choices: data.data.choices.map(choice => ({
               index: choice.index,
