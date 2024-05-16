@@ -6,6 +6,10 @@
 
 ### 支持模型:
 - SenseChat-5
+- SenseChat
+- SenseChat-32K
+- SenseChat-128K
+- SenseChat-Turbo 
   
 ### 项目说明:
 与 [haibbo/cf-openai-azure-proxy](https://github.com/haibbo/cf-openai-azure-proxy) 项目功能及用法完全一致，感谢 `@haibbo` 最初提出的方案。
